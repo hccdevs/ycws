@@ -1,7 +1,7 @@
 /* Start of Recent Changes code */
 // This is just to display the recent changes from GitHub (where we're hosting our website)
 function setGitLogs() {
-  fetch("https://api.github.com/repos/hccdevy/hccdevy.github.io/commits")
+  fetch("https://api.github.com/repos/hccdevs/ycws/commits")
     .then((response) => response.json())
     .then((commits) => {
       let git = document.querySelector(".git");
