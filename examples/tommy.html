@@ -4,23 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Tommy's Page</title>
+    <title>Tommy's page</title>
+
     <style>
+      /* CSS */
+
       * {
         font-family: Arial, Helvetica, sans-serif;
       }
+
       body {
         background: rgba(56, 133, 20, 0.5);
       }
-      /* CSS */
+
       .text {
         color: hotpink;
         font-size: 100px;
         background-color: rgb(137, 164, 182);
       }
-      body {
-        background-color: olive;
-      }
+
       .not-text {
         color: hotpink;
         font-size: 20px;
@@ -32,7 +34,7 @@
     <div>
       <a href="../index.html">🔙 Home</a>
     </div>
-    <div></div>
+
     <img
       src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
       alt="space"
@@ -44,6 +46,7 @@
       width="300px"
       height="100px"
     />
+
     <h1>Tommy's Website</h1>
     <h2>Heading 2</h2>
     <h3>Heading 3</h3>
@@ -80,7 +83,8 @@
 
     <button onclick="alert('Nevermind.')">Call me maybe</button>
 
-    <button onclick="alert('something else.')">Calle</button>
+    <button onclick="alert('something else.')">Something Else</button>
+
     <a target="_blank" href="https://stackoverflow.co me maybm"
       >Stack Overflow</a
     >
@@ -102,15 +106,22 @@
     <br />
     <br />
     <hr />
-    <!-- <p>Copyright Tommy &#0169; 2020</p>
-    <p class="footer">Copyright Tommy &copy;</p> -->
+
+    <p>Copyright Tommy &#0169; 2020</p>
+    <p class="footer">Copyright Tommy &copy;</p>
 
     <button onclick="hello()">Say Hello!</button>
     <script>
+      // JavaScript
       function hello() {
         let name = prompt("What's your name?");
         alert("Hello" + " " + name + "!");
       }
+
+      // Get the footer and div and add the year to it
+      let footer = document.querySelector(".footer");
+      let currentYear = new Date().getFullYear();
+      footer.textContent = footer.textContent + " " + currentYear;
     </script>
   </body>
 </html>
