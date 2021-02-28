@@ -10,6 +10,10 @@
         background: gray;
         font-family: sans-serif;
       }
+      .centreimage {
+        display: flex;
+        justify-content: center;
+      }
       button {
         color: rgb(102, 188, 216);
       }
@@ -21,15 +25,23 @@
     </div>
     <h2>Julian's Website</h2>
     <div>
-      <button>Click Me</button>
-      <a href="./index.html"> Home</a>
+      <button onclick="alert('Hello.')">Click Me</button>
     </div>
     <br />
-    <img
-      width="300px"
-      height="200px"
-      src="https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-    />
+    <div class="centreimage">
+      <img
+        width="300px"
+        height="200px"
+        src="https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+      />
+    </div>
     <p>A Cute Cat</p>
+    <button onclick="hello()">Say Hello!</button>
+    <script>
+      function hello() {
+        let name = prompt("What's your name?");
+        alert("Hello" + " " + name + "!");
+      }
+    </script>
   </body>
 </html>
