@@ -45,7 +45,8 @@
       }
 
       .counters,
-      .scores {
+      .scores,
+      .text {
         display: flex;
         justify-content: center;
       }
@@ -82,7 +83,17 @@
     </div>
 
     <div class="container">
-      <h1>Reaction Timer</h1>
+      <h1>Counter & Reflex Timer</h1>
+
+      <p>
+        This project uses a lot of JavaScript. You can reference the code and
+        its comments via the home page.
+      </p>
+      <p>
+        These are some basic counters you can use in your own projects. Feel
+        free to copy whatever you like here.
+      </p>
+
       <div class="counters">
         <div class="counter">
           <h2>Minimum Time</h2>
@@ -106,6 +117,10 @@
 
     <hr />
 
+    <div class="text">
+      <p style="width: 200px;"></p>
+    </div>
+
     <div class="reaction">
       <button class="btn btn-warning btn-reflex"></button>
     </div>
@@ -125,15 +140,22 @@
     </div>
 
     <script>
+      // For simplicity, all variables are defined with let
+      // even though some should be const since they don't change
+
+      // Define and set min/max time values
       let minValue = 0;
       let maxValue = 0;
 
+      // Get the HTML location that will display min and max counter
+      // and set it to the default value above (0)
       let minCounter = document.querySelector(".min-counter");
       minCounter.textContent = minValue;
 
       let maxCounter = document.querySelector(".max-counter");
       maxCounter.textContent = maxValue;
 
+      // Get all the buttons and put them in a variable
       let minDecrement = document.querySelector(".min-dec");
       let minReset = document.querySelector(".min-reset");
       let minIncrement = document.querySelector(".min-inc");
@@ -145,19 +167,24 @@
       let start = document.querySelector(".btn-start");
 
       let reflex = document.querySelector(".btn-reflex");
-      reflex.disabled = true;
-      reflex.textContent = "Set the timer and click start!";
+      reflex.disabled = true; // Set button to start off as disabled (unclickable)
+      reflex.textContent = "Set the timer and click start!"; // Give text to the button here instead of via HTML
 
+      // Boolean (T/F) for whether game is runnning
       let isGameRunning = false;
 
+      // Get the scores and set them to start off as "N/A"
       let currentScore = document.querySelector(".curr-score");
       currentScore.textContent = "N/A";
       let highScore = document.querySelector(".high-score");
       highScore.textContent = "N/A";
 
+      // When the specific button is clicked
+
+      // Adjust values and the text of counter on the click of the buttons
       minDecrement.addEventListener("click", function () {
-        minValue = minValue - 1;
-        minCounter.textContent = minValue;
+        minValue = minValue - 1; // Set the value to be the same value but subtracted by 1
+        minCounter.textContent = minValue; // Set the counter label to be the new subtracted value
       });
 
       minReset.addEventListener("click", function () {
@@ -171,7 +198,7 @@
       });
 
       maxDecrement.addEventListener("click", function () {
-        maxValue = maxValue - 1;
+        maxValue--; // Alernative to maxValue = maxValue - 1
         maxCounter.textContent = maxValue;
       });
 
@@ -181,27 +208,52 @@
       });
 
       maxIncrement.addEventListener("click", function () {
-        maxValue = maxValue + 1;
+        maxValue++;
         maxCounter.textContent = maxValue;
       });
 
+      // Occurs when the start button is clicked
       start.addEventListener("click", function () {
+        // If the game is not running, start the game
+        // Otherwise, stop the game
         if (isGameRunning === false) {
           startGame();
+        } else {
+          stopGame();
         }
       });
 
+      // Check that the game can start, then start the game
       function startGame() {
+        // If the maximum time is not larger than the minimum time, alert the user and quit
         if (minValue < 0 || minValue >= maxValue) {
           alert("Set appropriate min-max times!");
-          return;
-        }
+          return; // quit the function
+        } else {
+          // If the maximum time is larger than the minimum time, star the game
+          isGameRunning = true;
+          reflex.textContent =
+            "This was for a more complex project where you would have to click the button as fast as you can. I may update this in the future, but this doesn't work at the moment.";
+          start.textContent = "STOP";
 
-        let reflexTime = Math.random() * (maxValue - minValue) + minValue;
-        isGameRunning = true;
-        reflex.textContent = "This doesn't do anything right now...";
-        reflex.disabled = true;
-        let reflexTimer = new Date().getTime();
+          // reflex.disabled = true;
+          // let reflexTime = Math.random() * (maxValue - minValue) + minValue;
+          // let reflexTimer = new Date().getTime();
+        }
+      }
+
+      // Stop the game and reset all the values and text
+      function stopGame() {
+        isGameRunning = false;
+        start.textContent = "~ Start ~";
+
+        minValue = 0;
+        maxValue = 0;
+        minCounter.textContent = minValue;
+        maxCounter.textContent = maxValue;
+
+        reflex.textContent =
+          "You can press start again, but it'll just be the same thing...";
       }
     </script>
   </body>
